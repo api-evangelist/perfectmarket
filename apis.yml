@@ -12,9 +12,15 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/perfectmarket.png
 name: PerfectMarket
-description: 'PerfectMarket is a company surfaced as a portfolio company of trinity-ventures and added
-  to the API Evangelist network as a stub for enrichment. Sector: marketing. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: 'Perfect Market, Inc. was a digital publishing technology company founded by Idealab in
+  2007 and backed by Trinity Ventures, building on the Idealab/Overture paid-search lineage. It sold
+  software for driving traffic, engagement and advertising revenue to premium publishers, and claimed
+  more than 200 customers including LATimes.com, ChicagoTribune.com, NBCNews.com, Mediaite.com and
+  BusinessInsider.com. Taboola acquired Perfect Market in August 2014 for cash and stock and folded its
+  programmatic advertising technology into the Taboola-X publisher monetization product. The company no
+  longer operates independently and publishes no API surface: perfectmarket.com retains delegated
+  nameservers and Google Workspace mail but resolves to no web host on the apex, www, api, developer or
+  docs names, so there is no website, developer portal, documentation, or contract to profile.'
 url: https://raw.githubusercontent.com/api-evangelist/perfectmarket/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -22,12 +28,20 @@ x-backed-by:
 - trinity-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-status: defunct
+x-acquired-by: taboola
+x-acquired-year: 2014
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-08-13'
 tags:
 - Company
 - Marketing
+- Advertising
+- Publishing
+- Content Monetization
+- Programmatic Advertising
+- Acquired
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -35,11 +49,43 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 x-enrichment:
-  date: '2026-07-20'
+  date: '2026-08-13'
   status: nochange
   artifacts_added: 0
   pass: local-v1
-  notes: 'DNS probe of perfectmarket.com: no A/CNAME on apex, www, api, developer,
-    or docs (no live web host); Google Workspace MX + SPF including idealab.com and
-    mktomail.com present. No live website, developer portal, docs, or API surface to
-    enrich (defunct/acquired Idealab-lineage company).'
+  notes: 'Re-ran full STEP 0b contract discovery. perfectmarket.com has no A/CNAME on
+    the apex, www, api, developer or docs names, so every HTTP probe fails at DNS
+    resolution (curl 000) and there is no host to probe for OpenAPI, GraphQL, MCP or an
+    agent card. Google Workspace MX and an SPF record including idealab.com and
+    mktomail.com survive, which is mail-only residue rather than a product surface.
+    perfectmarket.ai does resolve, but it is an unrelated GoDaddy Website Builder
+    "Launching Soon" placeholder with no product, no docs and 404 on every spec and
+    /.well-known path; ownership by this company cannot be established from the page, so
+    per STEP 0c it was NOT attributed and nothing was derived from it. No npm, PyPI or
+    GitHub organization exists under the name. Confirmed via search that Taboola acquired
+    Perfect Market in August 2014 and absorbed its technology into Taboola-X; apis.yml
+    description, tags and acquisition fields were corrected to reflect that history
+    instead of the original "lead awaiting enrichment" stub text. No artifacts written —
+    an honest zero for a company that no longer exists.'
+x-coverage:
+  state: none
+  reason: defunct
+  detail: 'Perfect Market was acquired by Taboola in August 2014 and absorbed into the
+    Taboola-X publisher product; perfectmarket.com still has delegated nameservers and
+    Google Workspace mail but publishes no A or CNAME record on the apex, www, api,
+    developer or docs names, so every HTTP request fails at DNS and no web host, developer
+    portal or API contract survives anywhere under the name.'
+  evidence:
+  - url: https://perfectmarket.com/
+    status: 0
+  - url: https://api.perfectmarket.com/
+    status: 0
+  - url: https://developer.perfectmarket.com/
+    status: 0
+  - url: https://perfectmarket.ai/.well-known/agent-card.json
+    status: 404
+  - url: https://perfectmarket.ai/openapi.json
+    status: 404
+  - url: https://pypi.org/pypi/perfectmarket/json
+    status: 404
+  checked: '2026-08-13'
